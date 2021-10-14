@@ -1,56 +1,58 @@
-<?php namespace App\Database\Migrations;
+<?php
+
+namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Komentar extends \CodeIgniter\Database\Migration {
+class Komentar extends Migration
+{
     public function up(){
         $this->forge->addField([
             'id'=>[
-                'type'=>'INT',
-                'contraint'=>11,
+                'type'=>'INT' ,
+                'constraint'=>11,
                 'unsigned'=>True,
-                'auto_incement'=>TRUE,
+                'auto_increment'=>TRUE,
             ],
             'id_barang'=>[
                 'type'=>'INT',
                 'unsigned'=>True,
-                'auto_incement'=>TRUE,
+                'auto_increment'=>TRUE,
             ],
             'id_user'=>[
                 'type'=>'INT',
-                'contraint'=>11,
+                'constraint'=>11,
                 'unsigned'=>True,
-                'auto_incement'=>TRUE,
+                'auto_increment'=>TRUE,
             ],
             'komentar'=>[
                 'type'=>'TEXT',
             ],
             'create_by'=>[
                 'type'=>'INT',
-                'contraint'=>11,
+                'constraint'=>11,
             ],
             'create_date'=>[
                 'type'=>'DATETIME',
             ],
             'update_by'=>[
                 'type'=>'INT',
-                'contraint'=>11,
+                'constraint'=>11,
                 'null'=>TRUE,
             ],
-            'update_date'=>[
-                'type'=>'DATETIME',
-                'null'=>TRUE,
+            'update_date' => [
+                'type'  => 'DATETIME',
+                'null'  =>  true,
             ]
         ]);
 
         $this->forge->addKey('id', TRUE);
-        $this->forge->addForeignKey('id_user', 'user', 'id');
-        $this->forge->addForeignKey('id_barang', 'barang', 'id');
-        $this->forge->createTable('komentar');
+        $this->forge->addForeignKey('id_user', 'User', 'id');
+        $this->forge->addForeignKey('id_barang', 'Barang', 'id');
+        $this->forge->createTable('Komentar');
 
     }
     public function down(){
-        $this->forge->dropTable('komentar');
+        $this->forge->dropTable('Komentar');
     }
 }
-?>

@@ -2,44 +2,45 @@
 
 use CodeIgniter\Database\Migration;
 
-class User extends \CodeIgniter\Database\Migration {
+class User extends Migration
+{
     public function up(){
         $this->forge->addField([
-            'id'        => [
+            'id' => [
                 'type'          =>  'INT',
-                'contraint'     =>  11,
+                'constraint'     =>  11,
                 'unsigned'      =>  true,
-                'auto_incement' =>  true,
+                'auto_increment' =>  true,
             ],
             'username'  =>  [
-                'type'=>'VARCHAR',
-                'contraint'=>100,
+                'type' => 'VARCHAR',
+                'constraint'=> 100,
             ],
-            'password'  =>[
-                'type'          => 'VARCHAR',
+            'password' =>   [
+                'type' => 'VARCHAR',
             ],
-            'salt'      =>   [
+            'salt' =>   [
                 'type'          => 'TEXT',
             ],
-            'avatar' =>[
+            'avatar' => [
                 'type'          => 'TEXT',
                 'null'          => true,
             ],
-            'role'  =>  [
+            'role' =>   [
                 'type'          =>  'INT',
-                'contraint'     =>  1,
-                'default'       =>1,
+                'constraint'    =>  1,
+                'default'       =>  1,
             ],
             'create_by' =>  [
                 'type'          =>'INT',
-                'contraint'     =>11,
+                'constraint'    =>11,
             ],
             'create_date'   =>  [
                 'type'=>'DATETIME',
             ],
             'update_by'=>[
                 'type'          =>  'INT',
-                'contraint'     =>  11,
+                'constraint'     =>  11,
                 'null'          =>  true,
             ],
             'update_date'=>[
@@ -49,11 +50,10 @@ class User extends \CodeIgniter\Database\Migration {
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->createTable('user');
+        $this->forge->createTable('User');
 
     }
     public function down(){
-        $this->forge->dropTable('user');
+        $this->forge->dropTable('User');
     }
 }
-?>
